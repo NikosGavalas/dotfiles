@@ -1,3 +1,3 @@
 # LinuxScripts
 
-Various useful scripts and configuration files
+Various useful scripts and dotfiles.
