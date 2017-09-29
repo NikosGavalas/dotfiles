@@ -7,7 +7,7 @@ import smtplib
 gmail_user = 'yourmail@gmail.com'
 gmail_password = 'yourpass'
 
-cache_file = '/home/nik/check_ip_change/last_used_ip.txt'
+cache_file = '/path/to/last_used_ip.txt'
 
 def notify(new_ip):
 	global gmail_user
