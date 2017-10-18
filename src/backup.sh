@@ -5,7 +5,7 @@ backup_files="path/to/gitea/ /path/of/your/choice /etc/letsencrypt /etc/nginx /p
 
 dest="/media/your_disk/backup"
 
-day=$(date +%a)
+day=$(date +"%m-%d-%y")
 hostname=$(hostname -s)
 archive_file="$hostname-$day.tgz"
 
