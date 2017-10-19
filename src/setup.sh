@@ -19,7 +19,7 @@ set -v
 cd ${HOME}
 
 STEP Install git, vim, and other tools && {
-        apt-get install git vim bash-completion bc htop
+        sudo apt-get install git vim bash-completion bc htop
 }
 
 STEP Enable greek UTF-8 locale && {
@@ -42,4 +42,5 @@ STEP Download and install bashrc and vimrc && {
         cp ./LinuxScripts/src/vimrc ~/.vimrc
 }
 
+set +v
 echo 'Done.'
