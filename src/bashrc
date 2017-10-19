@@ -77,6 +77,15 @@ alias ll='ls -lh'
 alias la='ls -A'
 alias l='ls -CF'
 alias back='cd $OLDPWD'
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias ports='netstat -tulanp'
+alias update='sudo apt-get update && sudo apt-get upgrade -y'
+#alias mv='mv -i'
+#alias cp='cp -i'
+#alias ln='ln -i'
+
 
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
