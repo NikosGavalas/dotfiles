@@ -119,14 +119,14 @@ export PATH=$PATH:~/.cargo/bin
 # ==========
 # GIT
 # ==========
-function lazypush() {
+function push() {
 	git add .
-	git commit -m 0
-	git push $1 master
+	git commit -m "$1"
+	git push origin master
 }
 
-function lazypull() {
-	git pull $1 master
+function pull() {
+	git pull origin master
 }
 
 
