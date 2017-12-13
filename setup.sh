@@ -19,27 +19,27 @@ set -v
 cd ${HOME}
 
 STEP Install git, vim, and other tools && {
-        sudo apt-get install git vim bash-completion bc htop screen
+	sudo apt-get install git vim bash-completion bc htop screen g++
 }
 
 STEP Enable greek UTF-8 locale && {
-        sed -i -e 's/^# *\(el_GR.UTF-8\)$/\1/g' /etc/locale.gen
-        locale-gen
+	sed -i -e 's/^# *\(el_GR.UTF-8\)$/\1/g' /etc/locale.gen
+	locale-gen
 }
 
 STEP Enable greek UTF-8 typing in shell && {
-        touch ~/.bashrc
-        sed -i -e '/^export LC_CTYPE=/d' ~/.bashrc
-        echo 'export LC_CTYPE=el_GR.UTF-8' '>>' ~/.bashrc
+	touch ~/.bashrc
+	sed -i -e '/^export LC_CTYPE=/d' ~/.bashrc
+	echo 'export LC_CTYPE=el_GR.UTF-8' '>>' ~/.bashrc
 }
 
 
 STEP Download and install bashrc and vimrc && {
-        git clone https://code.nickgavalas.com/nik/LinuxScripts.git
-        mv ~/.bashrc ~/.bashrc.default
-        mv ~/.vimrc ~/.vimrc.default
-        cp ./LinuxScripts/bashrc ~/.bashrc
-        cp ./LinuxScripts/vimrc ~/.vimrc
+	git clone https://code.nickgavalas.com/nik/LinuxScripts.git
+	mv ~/.bashrc ~/.bashrc.default
+	mv ~/.vimrc ~/.vimrc.default
+	cp ./LinuxScripts/bashrc ~/.bashrc
+	cp ./LinuxScripts/vimrc ~/.vimrc
 }
 
 set +v
