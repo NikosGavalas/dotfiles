@@ -27,7 +27,7 @@ HISTFILESIZE=2000
 # =========
 # PROMPT
 # =========
-branch() {
+check_branch() {
 	git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
 }
 
@@ -53,7 +53,7 @@ get_prompt() {
 		PROMPT="${BRED}$ ${NORMAL}"
 	fi
 
-	PS1="\n${BRED}\u@\h${NORMAL}:${BBLUE}\w${YELLOW}\$(branch)\n${PROMPT}"
+	PS1="\n${BRED}\u@\h${NORMAL}:${BBLUE}\w${YELLOW}\$(check_branch)\n${PROMPT}"
 }
 
 PROMPT_COMMAND=get_prompt
