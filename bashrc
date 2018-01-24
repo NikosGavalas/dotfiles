@@ -119,14 +119,26 @@ export PATH=$PATH:~/.cargo/bin
 # ==========
 # GIT
 # ==========
-function push() {
+function branch() {
+	git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'
+}
+
+function commit() {
 	git add .
 	git commit -m "$1"
-	git push origin master
 }
 
 function pull() {
-	git pull origin master
+	git pull origin "$(branch)"
+}
+
+function push() {
+	if [ -z "$1" ]; then
+		git push origin "$(branch)"
+	else
+		commit "$1"
+		git push origin "$(branch)"
+	fi
 }
 
 
