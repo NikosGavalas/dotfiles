@@ -83,6 +83,7 @@ alias ....='cd ../../..'
 alias ports='netstat -tulanp'
 alias update='sudo apt-get update && sudo apt-get upgrade -y'
 alias naut='nautilus'
+alias beep='paplay $BEEP'
 #alias mv='mv -i'
 #alias cp='cp -i'
 #alias ln='ln -i'
@@ -109,13 +110,13 @@ fi
 
 
 # ==========
-# PATH
+# PATH AND VARIABLES
 # ==========
 export PATH=$PATH:~/code/
 export PATH=$PATH:~/anaconda3/bin
 export PATH=$PATH:~/.cargo/bin
 export PATH=$PATH:/opt/node-v8.9.3-linux-x64/bin
-
+export BEEP=/usr/share/sounds/gnome/default/alerts/glass.ogg
 
 # ==========
 # GIT
