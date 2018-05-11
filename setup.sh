@@ -19,7 +19,7 @@ set -v
 cd ${HOME}
 
 STEP Install git, vim, and other tools && {
-	sudo apt-get install git vim bash-completion bc htop screen g++ gcc binutils build-essential tree
+	sudo apt-get install git vim bash-completion bc glances htop screen g++ gcc binutils build-essential tree
 }
 
 STEP Enable greek UTF-8 locale && {
