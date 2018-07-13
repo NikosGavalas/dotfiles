@@ -4,34 +4,32 @@ import urllib.request
 from sys import exit
 import smtplib
 
-gmail_user = 'yourmail@gmail.com'
-gmail_password = 'yourpass'
+GMAIL_USER = 'yourmail@gmail.com'
+GMAIL_PASSWORD = 'yourpass'
+MAIL_TO_NOTIFY = 'mail_to_notify@whatever.com'
 
-cache_file = '/path/to/cache.txt'
+CACHE_FILE = '/path/to/cache.txt'
 
-def notify(new_ip):
-	global gmail_user
-	global gmail_password
 
-	mail_to_notify = 'mail_to_notify@whatever.com'
-
-	email_text = "From: %s\r\nTo: %s\r\nSubject: %s\r\n\r\n%s%s" % (gmail_user, mail_to_notify, "Your Server's IP has changed!", "New IP is: ", new_ip)
+def notify(user, password, dest, new_ip):
+	email_text = "From: %s\r\nTo: %s\r\nSubject: %s\r\n\r\n%s%s" % (user, dest, "Your Server's IP has changed!", "New IP is: ", new_ip)
 
 	server = smtplib.SMTP_SSL('smtp.gmail.com', 465)
 	server.ehlo()
-	server.login(gmail_user, gmail_password)
-	server.sendmail(gmail_user, mail_to_notify, email_text)
+	server.login(user, password)
+	server.sendmail(user, dest, email_text)
 	server.close()
+
 
 with urllib.request.urlopen('https://api.ipify.org/') as response:
 	current_ip = response.read().decode()
 
-with open(cache_file, 'r') as f:
+with open(CACHE_FILE, 'r') as f:
 	last_used_ip = f.readlines()[0]
 
 if (last_used_ip != current_ip):
-	with open(cache_file, 'w') as f:
+	with open(CACHE_FILE, 'w') as f:
 		f.write(current_ip)
-	notify(current_ip)
+	notify(GMAIL_USER, GMAIL_PASSWORD, MAIL_TO_NOTIFY, current_ip)
 
 	

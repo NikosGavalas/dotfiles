@@ -11,7 +11,6 @@ esac
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 
-
 # =========
 # HISTORY 
 # =========
@@ -22,7 +21,6 @@ shopt -s histappend
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=1000
 HISTFILESIZE=2000
-
 
 # =========
 # PROMPT
@@ -53,11 +51,10 @@ get_prompt() {
 		PROMPT="${BRED}$ ${NORMAL}"
 	fi
 
-	PS1="\n${BRED}\u@\h${NORMAL}:${BBLUE}\w${YELLOW}\$(check_branch)\n${PROMPT}"
+	PS1="${BRED}\u@\h${NORMAL}:${BBLUE}\w${YELLOW}\$(check_branch)${PROMPT}"
 }
 
 PROMPT_COMMAND=get_prompt
-
 
 # =================
 # COLOR && ALIASES
@@ -94,7 +91,6 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
-
 # ===========
 # COMPLETION
 # ===========
@@ -108,7 +104,6 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-
 
 # ==========
 # PATH AND VARIABLES
@@ -144,7 +139,6 @@ function push() {
 	fi
 }
 
-
 # =========
 # UTILITIES
 # =========
@@ -178,3 +172,4 @@ function cd()
     fi;
     builtin cd "${new_directory}" && ls
 }
+
