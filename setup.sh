@@ -18,8 +18,15 @@ STEP () {
 set -v
 cd ${HOME}
 
-STEP Install git, vim, and other tools && {
-	sudo apt install git vim bash-completion bc glances htop screen g++ gcc binutils build-essential tree
+ESSENTIAL="git vim bash-completion"
+MONITORING="glances htop iotop iftop"
+DEVELOPMENT="build-essential python3 gcc g++ binutils"
+UTILS="bc tree screen"
+
+echo $ESSENTIAL
+
+STEP Install packages && {
+	sudo apt install $ESSENTIAL $MONITORING $DEVELOPMENT $UTILS
 }
 
 STEP Enable greek UTF-8 locale && {
