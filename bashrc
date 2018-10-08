@@ -178,5 +178,5 @@ function cd()
 # =========
 
 export GOPATH=$HOME/.go
-export PATH=$PATH:$GOPATH
+export PATH=$PATH:$GOPATH/bin
 
