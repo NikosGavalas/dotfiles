@@ -173,3 +173,10 @@ function cd()
     builtin cd "${new_directory}" && ls
 }
 
+# =========
+# GO
+# =========
+
+export GOPATH=$HOME/.go
+export PATH=$PATH:$GOPATH
+
