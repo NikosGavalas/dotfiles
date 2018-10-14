@@ -117,20 +117,20 @@ export BEEP=/usr/share/sounds/gnome/default/alerts/glass.ogg
 # ==========
 # GIT
 # ==========
-function branch() {
+branch() {
 	git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'
 }
 
-function commit() {
+commit() {
 	git add .
 	git commit -m "$1"
 }
 
-function pull() {
+pull() {
 	git pull origin "$(branch)"
 }
 
-function push() {
+push() {
 	if [ -z "$1" ]; then
 		git push origin "$(branch)"
 	else
@@ -164,13 +164,17 @@ extract() {
     done
 }
 
-function cd()
+cd()
 {
     new_directory="$*";
     if [ $# -eq 0 ]; then 
         new_directory=${HOME};
     fi;
     builtin cd "${new_directory}" && ls
+}
+
+speedtest() {
+    curl -L https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py | python -
 }
 
 # =========
