@@ -111,7 +111,7 @@ fi
 export PATH=$PATH:~/code/
 export PATH=$PATH:~/anaconda3/bin
 export PATH=$PATH:~/.cargo/bin
-export PATH=$PATH:/opt/node-v8.9.3-linux-x64/bin
+export PATH=$PATH:/opt/node-v10.14.1-linux-x64/bin
 export BEEP=/usr/share/sounds/gnome/default/alerts/glass.ogg
 
 # ==========
