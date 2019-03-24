@@ -1,0 +1,55 @@
+{
+    "window.zoomLevel": -1,
+    "window.menuBarVisibility": "toggle",
+    "window.titleBarStyle": "custom",
+    
+    "workbench.colorTheme": "Monokai",
+    
+    "editor.fontSize": 20,
+    "editor.fontFamily": "Consolas",
+    "editor.multiCursorModifier": "alt",
+    "editor.snippetSuggestions": "top",
+    //"editor.formatOnPaste": true,
+    "editor.rulers": [
+        80,
+        120
+    ],
+    "editor.minimap.enabled": false,
+    //"editor.wordWrap": "on"
+    
+    "python.formatting.provider": "autopep8",
+    "python.pythonPath": "/usr/bin/python3",
+    "python.linting.pylintArgs": [
+        // "--disable=C0111", // missing docstring
+        // "--disable=W0312", // mixed identation
+        // "--disable=C0303", // trailing whitespace
+        // "--disable=C0304", // newline missing
+        // "--disable=C0103", // Invalid variable name
+        // "--disable=C0301",  // Line too long
+        "--extension-pkg-whitelist=numpy",
+        "--ignored-classes=numpy"
+    ],
+
+    "explorer.confirmDelete": false,
+    "explorer.confirmDragAndDrop": false,
+
+    "rust.rustup": {
+        "toolchain": "stable-x86_64-unknown-linux-gnu",
+        "nightlyToolchain": "nightly-x86_64-unknown-linux-gnu"
+    },
+    "rust.mode": "legacy",
+
+    "telemetry.enableTelemetry": false,
+    "telemetry.enableCrashReporter": false,
+    "code-runner.enableAppInsights": false,
+    "update.channel": "none",
+    "extensions.autoUpdate": false,
+    "extensions.ignoreRecommendations": true,
+
+    // Google's Style for C/C++
+    "C_Cpp.clang_format_fallbackStyle": "{ BasedOnStyle: Google, IndentWidth: 4, ColumnLimit: 0}",
+    "latex-workshop.view.pdf.viewer": "tab",
+
+    "spellright.notificationClass": "warning"
+}
+
