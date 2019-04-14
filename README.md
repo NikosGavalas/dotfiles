@@ -1,9 +1,8 @@
-other useful files/dirs:
+# Dotfiles
 
-- ~/.config/user-dirs.dirs
-- /usr/local/share/fonts
+My dotfiles and other configuration files I use.
 
-some nice fonts:
-- monaco
-- consolas
-- lucida grande
+Install with:
+```
+curl -L https://raw.githubusercontent.com/NikosGavalas/dotfiles/master/setup.sh | bash
+```

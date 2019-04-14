@@ -1,6 +1,7 @@
-# =========
+# ==============================================================================
 # GENERAL
-# =========
+# ==============================================================================
+
 # If not running interactively, don't do anything
 case $- in
     *i*) ;;
@@ -11,9 +12,10 @@ esac
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 
-# =========
+# ==============================================================================
 # HISTORY 
-# =========
+# ==============================================================================
+
 # don't put duplicate lines or lines starting with space in the history.
 HISTCONTROL=ignoreboth
 # append to the history file, don't overwrite it
@@ -22,52 +24,54 @@ shopt -s histappend
 HISTSIZE=1000
 HISTFILESIZE=2000
 
-# =========
+# ==============================================================================
 # PROMPT
-# =========
+# ==============================================================================
+
 check_branch() {
-	git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
 }
 
 get_prompt() {
-	local EXITSTATUS="$?"
+    local EXITSTATUS="$?"
 
-	local BOLD="\[\033[1m\]"
-	local BGREEN='\[\033[1;32m\]'
-	local GREEN='\[\033[0;32m\]'
-	local BRED='\[\033[1;31m\]'
-	local RED='\[\033[0;31m\]'
-	local BBLUE='\[\033[1;34m\]'
-	local BLUE='\[\033[0;34m\]'
-	local NORMAL='\[\033[00m\]'
-	local YELLOW='\[\033[33m\]'
-	local CYAN='\[\033[0;36m\]'
-	local BCYAN='\[\033[1;36m\]'
+    local BOLD="\[\033[1m\]"
+    local BGREEN='\[\033[1;32m\]'
+    local GREEN='\[\033[0;32m\]'
+    local BRED='\[\033[1;31m\]'
+    local RED='\[\033[0;31m\]'
+    local BBLUE='\[\033[1;34m\]'
+    local BLUE='\[\033[0;34m\]'
+    local NORMAL='\[\033[00m\]'
+    local YELLOW='\[\033[33m\]'
+    local CYAN='\[\033[0;36m\]'
+    local BCYAN='\[\033[1;36m\]'
 
-	if [ "${EXITSTATUS}" -eq 0 ]
-	then
-		PROMPT="${BGREEN}$ ${NORMAL}"
-	else
-		PROMPT="${BRED}$ ${NORMAL}"
-	fi
+    if [ "${EXITSTATUS}" -eq 0 ]
+    then
+        PROMPT="${BGREEN}$ ${NORMAL}"
+    else
+        PROMPT="${BRED}$ ${NORMAL}"
+    fi
 
-	PS1="${BRED}\u@\h${NORMAL}:${BBLUE}\w${YELLOW}\$(check_branch)${PROMPT}"
+    PS1="${BRED}\u@\h${NORMAL}:${BBLUE}\w${YELLOW}\$(check_branch)${PROMPT}"
 }
 
 PROMPT_COMMAND=get_prompt
 
-# =================
-# COLOR && ALIASES
-# =================
+# ==============================================================================
+# COLOR & ALIASES
+# ==============================================================================
+
 # enable color support of various commands
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-	alias ls='ls --color=auto'
-	alias dir='dir --color=auto'
-	alias vdir='vdir --color=auto'
-	alias grep='grep --color=auto'
-	alias fgrep='fgrep --color=auto'
-	alias egrep='egrep --color=auto'
+    alias ls='ls --color=auto'
+    alias dir='dir --color=auto'
+    alias vdir='vdir --color=auto'
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
 fi
 
 alias ll='ls -lh'
@@ -82,6 +86,7 @@ alias update='sudo apt-get update && sudo apt-get upgrade -y'
 alias naut='nautilus'
 alias beep='paplay $BEEP'
 alias svim='sudo vim'
+alias get='curl -L'
 #alias mv='mv -i'
 #alias cp='cp -i'
 #alias ln='ln -i'
@@ -91,9 +96,10 @@ if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
 
-# ===========
+# ==============================================================================
 # COMPLETION
-# ===========
+# ==============================================================================
+
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
@@ -105,9 +111,10 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# ==========
+# ==============================================================================
 # PATH AND VARIABLES
-# ==========
+# ==============================================================================
+
 export PATH=$PATH:~/code/
 export PATH=$PATH:~/anaconda3/bin
 export PATH=$PATH:~/.cargo/bin
@@ -117,31 +124,33 @@ export BEEP=/usr/share/sounds/gnome/default/alerts/glass.ogg
 # ==========
 # GIT
 # ==========
+
 branch() {
-	git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'
+    git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'
 }
 
 commit() {
-	git add .
-	git commit -m "$1"
+    git add .
+    git commit -m "$1"
 }
 
 pull() {
-	git pull origin "$(branch)"
+    git pull origin "$(branch)"
 }
 
 push() {
-	if [ -z "$1" ]; then
-		git push origin "$(branch)"
-	else
-		commit "$1"
-		git push origin "$(branch)"
-	fi
+    if [ -z "$1" ]; then
+        git push origin "$(branch)"
+    else
+        commit "$1"
+        git push origin "$(branch)"
+    fi
 }
 
-# =========
+# ==============================================================================
 # UTILITIES
-# =========
+# ==============================================================================
+
 extract() {
     local x
     ee() { # echo and execute
@@ -164,8 +173,7 @@ extract() {
     done
 }
 
-cd()
-{
+cd() {
     new_directory="$*";
     if [ $# -eq 0 ]; then 
         new_directory=${HOME};
@@ -177,16 +185,16 @@ speedtest() {
     curl -L https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py | python -
 }
 
-# =========
+# ==============================================================================
 # GO
-# =========
+# ==============================================================================
 
 export GOPATH=$HOME/.go
 export PATH=$PATH:$GOPATH/bin
 
-# ========
+# ==============================================================================
 # CONDA
-# ========
+# ==============================================================================
 
 # added by Anaconda3 2018.12 installer
 # >>> conda init >>>
@@ -204,4 +212,3 @@ else
 fi
 unset __conda_setup
 # <<< conda init <<<
-
