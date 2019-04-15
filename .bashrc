@@ -86,7 +86,8 @@ alias update='sudo apt-get update && sudo apt-get upgrade -y'
 alias naut='nautilus'
 alias beep='paplay $BEEP'
 alias svim='sudo vim'
-alias get='curl -L'
+alias get='curl -fsSL'
+alias lss='du -h --max-depth=1 | sort -h -r'
 #alias mv='mv -i'
 #alias cp='cp -i'
 #alias ln='ln -i'
@@ -119,7 +120,7 @@ export PATH=$PATH:~/code/
 export PATH=$PATH:~/anaconda3/bin
 export PATH=$PATH:~/.cargo/bin
 export PATH=$PATH:/opt/node-v10.14.1-linux-x64/bin
-export BEEP=/usr/share/sounds/gnome/default/alerts/glass.ogg
+export BEEP=/usr/share/sounds/KDE-Sys-App-Positive.ogg
 
 # ==========
 # GIT
@@ -183,6 +184,32 @@ cd() {
 
 speedtest() {
     curl -L https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py | python -
+}
+
+update_config() {
+    curl -fsSL -o setup.sh https://raw.githubusercontent.com/NikosGavalas/dotfiles/master/setup.sh
+    bash setup.sh
+    rm setup.sh
+}
+
+reload() {
+    source ~/.bashrc
+}
+
+enslave() {
+    # Set up the dirs in case it's a new account
+    mkdir -p ~/.ssh
+    chmod 700 ~/.ssh
+    touch ~/.ssh/authorized_keys
+    chmod 600 ~/.ssh/authorized_keys
+    chmod go-w ~
+
+    # Fetch public keys
+    get https://raw.githubusercontent.com/NikosGavalas/dotfiles/master/authorized_keys >> ~/.ssh/authorized_keys
+
+    # Remove duplicates
+    sort ~/.ssh/authorized_keys | uniq > ~/.ssh/authorized_keys.uniq
+    mv ~/.ssh/authorized_keys{.uniq,}
 }
 
 # ==============================================================================
