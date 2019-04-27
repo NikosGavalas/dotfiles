@@ -4,7 +4,7 @@ My dotfiles and other configuration files I use.
 
 Install with:
 ```
-curl -fsSL -o setup.sh https://raw.githubusercontent.com/NikosGavalas/dotfiles/master/setup.sh; bash setup.sh
+curl -fsSL -o setup.sh https://raw.githubusercontent.com/NikosGavalas/dotfiles/master/setup.sh; bash setup.sh; source ~/.bashrc
 ```
 
 Some functions in .bashrc and git aliases by [G. Mantaos](https://gmantaos.com)

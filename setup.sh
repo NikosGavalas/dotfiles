@@ -3,7 +3,7 @@
 ESSENTIAL="git vim bash-completion"
 MONITORING="glances htop iotop iftop"
 DEVELOPMENT="build-essential python3 gcc g++ binutils"
-UTILS="bc tree screen nnn"
+UTILS="bc tree screen" #nnn"
 
 FILES=(".bashrc" ".vimrc" ".gitconfig")
 
