@@ -21,8 +21,9 @@ HISTCONTROL=ignoreboth
 # append to the history file, don't overwrite it
 shopt -s histappend
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=1000
-HISTFILESIZE=2000
+HISTSIZE=10000
+HISTFILESIZE=20000
+HISTIGNORE="&:pwd:ls:[bf]g:exit"
 
 # ==============================================================================
 # PROMPT
@@ -74,24 +75,33 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
-alias ll='ls -lh'
-alias la='ls -A'
+alias ll='ls -l'
+alias lh='ls -h'
+alias la='ls -lA'
 alias l='ls -CF'
+
 alias back='cd $OLDPWD'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
-alias ports='netstat -tulanp'
+
 alias update='sudo apt-get update && sudo apt-get upgrade -y'
+alias install='sudo apt install'
+alias uninstall='sudo apt purge'
+
+alias ports='netstat -tulanp'
+alias p='ps aux | grep'
 alias naut='nautilus'
 alias beep='paplay $BEEP'
 alias svim='sudo vim'
 alias get='curl -fsSL'
-alias lss='du -h --max-depth=1 | sort -h -r'
+alias o='xdg-open'
+alias h='history | grep'
+alias f='find . | grep'
+
 #alias mv='mv -i'
 #alias cp='cp -i'
 #alias ln='ln -i'
-
 
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
@@ -178,7 +188,7 @@ cd() {
     new_directory="$*";
     if [ $# -eq 0 ]; then 
         new_directory=${HOME};
-    fi;
+    fi
     builtin cd "${new_directory}" && ls
 }
 
@@ -186,14 +196,23 @@ speedtest() {
     curl -L https://raw.githubusercontent.com/sivel/speedtest-cli/master/speedtest.py | python -
 }
 
+reload() {
+    source ~/.bashrc
+}
+
 update_config() {
     curl -fsSL -o setup.sh https://raw.githubusercontent.com/NikosGavalas/dotfiles/master/setup.sh
     bash setup.sh
     rm setup.sh
+    reload
 }
 
-reload() {
-    source ~/.bashrc
+ldu() {
+    local path="."
+    if [[ $# != 0 ]]; then
+        path=$1
+    fi
+    du -h $path --max-depth=1 | sort -hr
 }
 
 enslave() {
@@ -210,6 +229,22 @@ enslave() {
     # Remove duplicates
     sort ~/.ssh/authorized_keys | uniq > ~/.ssh/authorized_keys.uniq
     mv ~/.ssh/authorized_keys{.uniq,}
+}
+
+encrypt() {
+    if [[ $# != 2 ]]; then
+        echo "usage: encrypt <infile> <outfile>"
+        return 1
+    fi
+    openssl enc -aes-256-cbc -pbkdf2 -salt -a -in $1 -out $2 || { echo "File not found"; return 1; }
+}
+
+decrypt() {
+    if [[ $# != 2 ]]; then
+        echo "usage: decrypt <infile> <outfile>"
+        return 1
+    fi
+    openssl enc -aes-256-cbc -pbkdf2 -d -a -in $1 -out $2 || { echo "File not found"; return 1; }
 }
 
 # ==============================================================================
