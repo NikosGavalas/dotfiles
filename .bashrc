@@ -204,7 +204,6 @@ update_config() {
     curl -fsSL -o setup.sh https://raw.githubusercontent.com/NikosGavalas/dotfiles/master/setup.sh
     bash setup.sh
     rm setup.sh
-    source ~/.bashrc
 }
 
 ldu() {
