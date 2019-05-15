@@ -1,8 +1,11 @@
 Useful files/dirs:
     ~/.config/user-dirs.dirs
     /usr/local/share/fonts
+    /usr/share/applications
+    ~/.local/share/applications
 
 Some nice fonts:
     monaco
     consolas
     lucida grande
+
