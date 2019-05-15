@@ -130,7 +130,7 @@ fi
 export PATH=$PATH:~/.cargo/bin
 export PATH=$PATH:/opt/node-v10.14.1-linux-x64/bin
 export BEEP=/usr/share/sounds/KDE-Sys-App-Positive.ogg
-export PATH=$PATH:/home/nick/anaconda3/bin
+export PATH=$PATH:/home/nick/app/anaconda3/bin
 
 # ==========
 # GIT
