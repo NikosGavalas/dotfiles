@@ -205,6 +205,11 @@ update_config() {
     rm setup.sh
 }
 
+clean_cache() {
+    # this will find and delete all files in the ~/.cache dir that were not accessed more than a year ago
+    find ~/.cache/ -type f -atime +365 -delete
+}
+
 ldu() {
     local path="."
     if [[ $# != 0 ]]; then
