@@ -234,7 +234,7 @@ encrypt() {
         echo "usage: encrypt <infile> <outfile>"
         return 1
     fi
-    openssl enc -aes-256-cbc -pbkdf2 -salt -a -in $1 -out $2 || { echo "File not found"; return 1; }
+    openssl enc -aes-256-cbc -salt -a -in $1 -out $2 || { echo "File not found"; return 1; }
 }
 
 decrypt() {
@@ -242,7 +242,7 @@ decrypt() {
         echo "usage: decrypt <infile> <outfile>"
         return 1
     fi
-    openssl enc -aes-256-cbc -pbkdf2 -d -a -in $1 -out $2 || { echo "File not found"; return 1; }
+    openssl enc -aes-256-cbc -d -a -in $1 -out $2 || { echo "File not found"; return 1; }
 }
 
 # ==============================================================================
