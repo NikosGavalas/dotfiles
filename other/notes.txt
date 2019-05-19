@@ -8,4 +8,4 @@ Some nice fonts:
     monaco
     consolas
     lucida grande
-
+    Noto Sans
