@@ -99,7 +99,7 @@ alias o='xdg-open'
 alias h='history | grep'
 alias f='find . | grep'
 
-alias rm='rm -i'
+#alias rm='rm -i'
 #alias mv='mv -i'
 #alias cp='cp -i'
 #alias ln='ln -i'
