@@ -1,7 +1,3 @@
-[user]
-    email = gavalnick@gmail.com
-    name = Nick Gavalas
-
 [credential]
     helper = cache --timeout 10800
 
