@@ -95,7 +95,6 @@ alias naut='nautilus'
 alias beep='paplay $BEEP'
 alias svim='sudo vim'
 alias get='curl -fsSL'
-alias o='xdg-open'
 alias h='history | grep'
 alias f='find . | grep'
 
@@ -249,6 +248,10 @@ decrypt() {
         return 1
     fi
     openssl enc -aes-256-cbc -d -a -in $1 -out $2 || { echo "File not found"; return 1; }
+}
+
+o() {
+    xdg-open $1 2> /dev/null
 }
 
 # ==============================================================================
