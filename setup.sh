@@ -12,8 +12,7 @@ if ! command -v curl &>/dev/null; then
     exit 1
 fi
 
-for file in "${FILES[@]}"
-do
+for file in "${FILES[@]}"; do
     mv "$HOME/${file}" "$HOME/${file}.old" 2> /dev/null || echo "created ${file}"
     curl -fsSL -o $HOME/${file} "https://raw.githubusercontent.com/NikosGavalas/dotfiles/master/${file}"
 done
@@ -25,3 +24,4 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
     sudo apt update && sudo apt upgrade -y
     sudo apt install ${ESSENTIAL} ${MONITORING} ${DEVELOPMENT} ${UTILS} -y
 fi
+

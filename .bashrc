@@ -205,6 +205,12 @@ update_config() {
     rm setup.sh
 }
 
+rollback_config() {
+    for file in ".bashrc" ".vimrc" ".gitconfig"; do
+        mv "$HOME/$file.old" "$HOME/${file}"
+    done
+}
+
 clean_cache() {
     # this will find and delete all files in the ~/.cache dir that were not accessed more than a year ago
     find ~/.cache/ -type f -atime +365 -delete
