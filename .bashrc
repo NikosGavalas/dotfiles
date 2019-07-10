@@ -200,9 +200,7 @@ reload() {
 }
 
 update_config() {
-    curl -fsSL -o setup.sh https://raw.githubusercontent.com/NikosGavalas/dotfiles/master/setup.sh
-    bash setup.sh
-    rm setup.sh
+    curl -fsSL https://raw.githubusercontent.com/NikosGavalas/dotfiles/master/setup.sh | bash
 }
 
 rollback_config() {
