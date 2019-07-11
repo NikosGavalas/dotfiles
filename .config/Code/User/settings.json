@@ -46,10 +46,9 @@
     "extensions.autoUpdate": false,
     "extensions.ignoreRecommendations": true,
 
-    // Google's Style for C/C++
+    // Google's style for C/C++
     "C_Cpp.clang_format_fallbackStyle": "{ BasedOnStyle: Google, IndentWidth: 4, ColumnLimit: 0}",
     "latex-workshop.view.pdf.viewer": "tab",
 
     "spellright.notificationClass": "warning"
 }
-
