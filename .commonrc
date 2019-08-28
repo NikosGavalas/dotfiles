@@ -189,3 +189,10 @@ decrypt() {
 o() {
     xdg-open $1 2> /dev/null
 }
+
+install_packages() {
+    sudo apt update
+    PACKAGES="git vim bash-completion glances htop iotop iftop build-essential \
+    zsh neovim python3 gcc g++ binutils bc tree screen tmux nnn"
+    for p in ${PACKAGES}; do sudo apt install -y $p; done
+}
