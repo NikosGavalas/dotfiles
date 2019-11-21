@@ -48,11 +48,15 @@ get_prompt() {
     local CYAN='\[\033[0;36m\]'
     local BCYAN='\[\033[1;36m\]'
 
-    if [ "${EXITSTATUS}" -eq 0 ]
-    then
-        PROMPT="${BGREEN}$ ${NORMAL}"
+    local SYMBOL='$'
+    if [ "$EUID" -eq 0 ]; then
+        SYMBOL='#'
+    fi
+
+    if [ "${EXITSTATUS}" -eq 0 ]; then
+        PROMPT="${BGREEN}${SYMBOL} ${NORMAL}"
     else
-        PROMPT="${BRED}$ ${NORMAL}"
+        PROMPT="${BRED}${SYMBOL} ${NORMAL}"
     fi
 
     PS1="${BRED}\u@\h${NORMAL}:${BBLUE}\w${YELLOW}\$(check_branch)${PROMPT}"
@@ -68,11 +72,11 @@ PROMPT_COMMAND=get_prompt
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).
 if ! shopt -oq posix; then
-  if [ -f /usr/share/bash-completion/bash_completion ]; then
-    . /usr/share/bash-completion/bash_completion
-  elif [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
-  fi
+    if [ -f /usr/share/bash-completion/bash_completion ]; then
+        . /usr/share/bash-completion/bash_completion
+    elif [ -f /etc/bash_completion ]; then
+        . /etc/bash_completion
+    fi
 fi
 
 # ==============================================================================
