@@ -1,68 +1,3 @@
-################################################################################
-# Variables
-################################################################################
-
-export BEEP=/usr/share/sounds/KDE-Sys-App-Positive.ogg
-
-export PATH=$PATH:$HOME/.cargo/bin
-
-export PATH=$PATH:/opt/node/bin
-
-export PATH=$PATH:$HOME/app/anaconda3/bin
-
-export PATH=$PATH:/usr/local/go/bin
-export GOPATH=$HOME/go
-export PATH=$PATH:$GOPATH/bin
-
-################################################################################
-# Aliases
-################################################################################
-
-# enable color support of various commands
-if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
-    alias dir='dir --color=auto'
-    alias vdir='vdir --color=auto'
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
-fi
-
-alias ll='ls -lrt'
-alias lh='ls -h'
-alias la='ls -lA'
-alias l='ls -CF'
-
-alias back='cd $OLDPWD'
-alias ..='cd ..'
-alias ...='cd ../..'
-alias ....='cd ../../..'
-
-alias update='sudo apt-get update && sudo apt-get upgrade -y'
-alias install='sudo apt install'
-alias uninstall='sudo apt purge'
-
-alias ports='netstat -tulanp'
-alias p='ps aux | grep'
-alias naut='nautilus'
-alias beep='paplay $BEEP'
-alias svim='sudo vim'
-alias get='curl -fsSL'
-alias h='history | grep'
-alias f='find . | grep'
-
-alias save='history -a'
-
-#alias rm='rm -i'
-#alias mv='mv -i'
-#alias cp='cp -i'
-#alias ln='ln -i'
-
-################################################################################
-# Functions
-################################################################################
-
 branch() {
     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'
 }
@@ -127,24 +62,8 @@ update_config() {
     curl -fsSL https://raw.githubusercontent.com/NikosGavalas/dotfiles/master/setup.sh | bash
 }
 
-rollback_config() {
-    FILES=(
-        ".bashrc"
-        ".zshrc"
-        ".commonrc"
-        ".vimrc"
-        ".gitconfig"
-        ".tmux.conf"
-        ".config/nvim/init.vim"
-        ".config/Code/User/settings.json"
-    )
-    for file in "${FILES[@]}"; do
-        mv "$HOME/${file}.old" "$HOME/${file}" 2>/dev/null || (rm "$HOME/${file}" && echo "removed ${file}")
-    done
-}
-
 clean_cache() {
-    # this will find and delete all files in the ~/.cache dir that were not accessed more than a year ago
+    # find and delete all files in the ~/.cache dir that were not accessed more than a year ago
     find ~/.cache/ -type f -atime +365 -delete
 }
 
@@ -197,4 +116,8 @@ install_packages() {
     PACKAGES="git vim bash-completion glances htop iotop iftop build-essential \
     zsh neovim python3 gcc g++ binutils bc tree screen tmux nnn"
     for p in ${PACKAGES}; do sudo apt install -y $p; done
+}
+
+beep() {
+    paplay /usr/share/sounds/gnome/default/alerts/glass.ogg
 }

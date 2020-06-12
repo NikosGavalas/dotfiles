@@ -1,0 +1,40 @@
+# enable color support of various commands
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+    alias dir='dir --color=auto'
+    alias vdir='vdir --color=auto'
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
+fi
+
+alias ll='ls -lrt'
+alias lh='ls -h'
+alias la='ls -lA'
+alias l='ls -CF'
+
+alias back='cd $OLDPWD'
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+
+alias upgrade='sudo apt-get update && sudo apt-get upgrade -y'
+alias install='sudo apt install'
+alias uninstall='sudo apt purge'
+
+alias ports='netstat -tulanp'
+alias p='ps aux | grep'
+alias naut='nautilus'
+alias beep='paplay $BEEP'
+alias svim='sudo vim'
+alias get='curl -fsSL'
+alias h='history | grep'
+alias f='find . | grep'
+
+alias save='history -a'
+
+#alias rm='rm -i'
+#alias mv='mv -i'
+#alias cp='cp -i'
+#alias ln='ln -i'

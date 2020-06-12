@@ -38,28 +38,30 @@ get_prompt() {
 
     local BOLD="\[\033[1m\]"
     local BGREEN='\[\033[1;32m\]'
-    local GREEN='\[\033[0;32m\]'
+    #local GREEN='\[\033[0;32m\]'
     local BRED='\[\033[1;31m\]'
-    local RED='\[\033[0;31m\]'
-    local BBLUE='\[\033[1;34m\]'
-    local BLUE='\[\033[0;34m\]'
+    #local RED='\[\033[0;31m\]'
+    #local BBLUE='\[\033[1;34m\]'
+    #local BLUE='\[\033[0;34m\]'
     local NORMAL='\[\033[00m\]'
-    local YELLOW='\[\033[33m\]'
-    local CYAN='\[\033[0;36m\]'
-    local BCYAN='\[\033[1;36m\]'
+    #local YELLOW='\[\033[33m\]'
+    #local CYAN='\[\033[0;36m\]'
+    #local BCYAN='\[\033[1;36m\]'
 
-    local SYMBOL='$'
+    local USYMBOL='$'
+    local UCOLOR=${BOLD}
     if [ "$EUID" -eq 0 ]; then
-        SYMBOL='#'
+        USYMBOL='#'
+        UCOLOR=${BRED}
     fi
 
     if [ "${EXITSTATUS}" -eq 0 ]; then
-        PROMPT="${BGREEN}${SYMBOL} ${NORMAL}"
+        PROMPT="${BGREEN}${USYMBOL}${NORMAL}"
     else
-        PROMPT="${BRED}${SYMBOL} ${NORMAL}"
+        PROMPT="${BRED}${USYMBOL}${NORMAL}"
     fi
 
-    PS1="${BRED}\u@\h${NORMAL}:${BBLUE}\w${YELLOW}\$(check_branch)${PROMPT}"
+    PS1="${UCOLOR}\h${NORMAL} ${PROMPT} "
 }
 
 PROMPT_COMMAND=get_prompt
@@ -80,9 +82,9 @@ if ! shopt -oq posix; then
 fi
 
 # ==============================================================================
-# FUNCTIONS, ALIASES AND VARIABLES
+# ENV VARS, ALIASES, FUNCTIONS
 # ==============================================================================
 
-if [ -f ~/.commonrc ]; then
-    . ~/.commonrc
-fi
+[[ -f ~/.env ]] && . ~/.env
+[[ -f ~/.aliases ]] && . ~/.aliases
+[[ -f ~/.functions ]] && . ~/.functions
