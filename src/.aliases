@@ -34,6 +34,8 @@ alias f='find . | grep'
 
 alias save='history -a'
 
+alias py='python3'
+
 #alias rm='rm -i'
 #alias mv='mv -i'
 #alias cp='cp -i'
