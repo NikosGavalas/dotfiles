@@ -117,7 +117,3 @@ install_packages() {
     zsh neovim python3 gcc g++ binutils bc tree screen tmux nnn"
     for p in ${PACKAGES}; do sudo apt install -y $p; done
 }
-
-notify() {
-    paplay /usr/share/sounds/gnome/default/alerts/glass.ogg
-}
