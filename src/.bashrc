@@ -88,3 +88,4 @@ fi
 [[ -f ~/.env ]] && . ~/.env
 [[ -f ~/.aliases ]] && . ~/.aliases
 [[ -f ~/.functions ]] && . ~/.functions
+[[ -f ~/.custom ]] && . ~/.custom
