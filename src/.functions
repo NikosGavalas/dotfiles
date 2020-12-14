@@ -58,11 +58,11 @@ reload() {
     source ~/.bashrc
 }
 
-update_config() {
+update-config() {
     curl -fsSL https://raw.githubusercontent.com/NikosGavalas/dotfiles/master/setup.sh | bash
 }
 
-clean_cache() {
+clean-cache() {
     # find and delete all files in the ~/.cache dir that were not accessed more than a year ago
     find ~/.cache/ -type f -atime +365 -delete
 }
@@ -111,7 +111,7 @@ o() {
     xdg-open $1 2> /dev/null
 }
 
-install_packages() {
+install-packages() {
     sudo apt update
     PACKAGES="git vim bash-completion glances htop iotop iftop build-essential \
     zsh neovim python3 gcc g++ binutils bc tree screen tmux nnn"
