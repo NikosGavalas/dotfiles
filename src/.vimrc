@@ -1,7 +1,7 @@
 " General
 set encoding=utf-8
 set number
-set clipboard=unnamed               " System clipboard
+set clipboard=unnamedplus           " System clipboard
 set fileformat=unix
 set nowrap
 set mouse=a
