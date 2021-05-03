@@ -1,6 +1,9 @@
 [credential]
     helper = cache --timeout 10800
 
+[pull]
+    rebase = true
+
 [alias]
     progress = diff --stat
     st = status
