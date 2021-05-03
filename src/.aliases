@@ -22,6 +22,7 @@ alias ....='cd ../../..'
 alias upgrade='sudo apt-get update && sudo apt-get upgrade -y'
 alias install='sudo apt install'
 alias uninstall='sudo apt purge'
+alias yeet='sudo apt purge'
 
 alias ports='netstat -tulanp'
 alias p='ps aux | grep'
@@ -31,6 +32,7 @@ alias svim='sudo vim'
 alias get='curl -fsSL'
 alias h='history | grep'
 alias f='find . | grep'
+alias s='sudo systemctl'
 
 alias save='history -a'
 
