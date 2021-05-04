@@ -6,7 +6,7 @@ set fileformat=unix
 set nowrap
 set mouse=a
 syntax on
-set tabstop=4
+set tabstop=2
 set expandtab
 
 " Splits
