@@ -22,6 +22,7 @@ cat << EOF > "$HOME/.local/bin/shortcut"
 [[ -z "\$1" ]] && echo "usage: \$0 <shortcut-name>" >&2 && exit 1
 bash -i "$HOME/.shortcuts/\$1"
 EOF
+chmod +x "$HOME/.local/bin/shortcut"
 
 echo "backing up old files and fetching the new ones..."
 for file in "${FILES[@]}"; do
